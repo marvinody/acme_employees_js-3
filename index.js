@@ -48,4 +48,10 @@ const findManagementChainForEmployee = (name, employees) => {
   }
 };
 
+const generateManagementTree = employees => {
+  const manager = employees.find(emp => emp.mangerId === undefined);
+  let updatedEmps = employees.filter(emps => emps.id !== manager.id);
+  console.log(updatedEmps);
+};
+
 console.log(findEmployeeByName("moe", employees));
