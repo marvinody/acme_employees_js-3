@@ -9,18 +9,23 @@ const employees = [
   { id: 99, name: 'lucy', managerId: 1 }
 ]
 
+// great variable names! clear & concise
 const findEmployeeByName = (name, employees) => {
+  // what does filter return?
   return employees.filter(emps => {
     if (name === emps.name) {
       // console.log("In findEmployee func");
       // console.log(emps);
       return emps
     }
-  })[0]
+  })[0] // what array method do you use right below this?
+  // if you find yourself doing arr.filter()[0], you should probably look to a find!
 }
 
+// I believe the first param (name) isn't a name, but an employee object
+// remember to make your variable names what they actually stand for
 const findManagerFor = (name, employees) => {
-  return employees.find(val => {
+  return employees.find(val => { // good use of find
     if (val.id === name.managerId) {
       return val
     }
@@ -28,6 +33,8 @@ const findManagerFor = (name, employees) => {
 }
 
 const findCoworkersFor = (name, employees) => {
+  // ooooo, super close. when do we use map vs filter?
+  // we can talk more about it in office hours if you want
   return employees.map(emps => {
     if (emps.managerId === name.managerId) {
       return emps
@@ -35,6 +42,8 @@ const findCoworkersFor = (name, employees) => {
   })
 }
 
+// it seems like you may have been going for some recursion (you have a base case)
+// but your recursive case needs to be revisited
 const findManagementChainForEmployee = (name, employees) => {
   if (!name.managerId) { return [] }
   else {
